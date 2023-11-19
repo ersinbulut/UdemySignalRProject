@@ -58,6 +58,7 @@ namespace SignalRWebUI.Controllers
             return View();
         }
 
+        [HttpGet]
         public async Task<IActionResult> UpdateCategory(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -70,5 +71,19 @@ namespace SignalRWebUI.Controllers
             }
             return View();
         }
-    }
+        [HttpPost]
+		public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
+        {
+			var client = _httpClientFactory.CreateClient();
+			var jsonData = JsonConvert.SerializeObject(updateCategoryDto);
+			StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+			var responseMessage = await client.PutAsync("https://localhost:7073/api/Category", stringContent);
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				return RedirectToAction("Index");
+			}
+			return View();
+		}
+
+	}
 }
