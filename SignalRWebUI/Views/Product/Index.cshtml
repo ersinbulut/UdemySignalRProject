@@ -1,4 +1,4 @@
-﻿@model List<ResultCategoryDto>
+﻿@model List<ResultProductDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -6,24 +6,26 @@
 
 <div class="content">
     <div class="container-fluid">
-        <h4 class="page-title">Kategori İşlemleri</h4>
+        <h4 class="page-title">Ürün İşlemleri</h4>
         <div class="row">
 
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Kategori Listesi</div>
+                        <div class="card-title">Ürün Listesi</div>
                     </div>
                     <div class="card-body">
                         <div class="card-sub">
-                           Kategori ile ilgili işlemleri aşağıdan gerçekleştirebilirsiniz.
+                            Ürün ile ilgili işlemleri aşağıdan gerçekleştirebilirsiniz.
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Kategori Adı</th>
+                                        <th>Ürün Adı</th>
+                                        <th>Fiyat</th>
+                                        <th>Kategori</th>
                                         <th>Durum</th>
                                         <th>Sil</th>
                                         <th>Güncelle</th>
@@ -32,17 +34,19 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                    <tr>
-                                        <th scope="row">@item.CategoryID</th>
-                                        <td>@item.CategoryName</td>
-                                        <td>@item.Status</td>
-                                            <td><a href="/Category/DeleteCategory/@item.CategoryID" class="btn btn-danger btn-border btn-round">Sil</a></td>
-                                            <td><a href="/Category/UpdateCategory/@item.CategoryID" class="btn btn-outline-success">Güncelle</a></td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">@item.ProductID</th>
+                                            <td>@item.ProductName</td>
+                                            <td>@item.Price</td>
+                                            <td>@item.CategoryName</td>
+                                            <td>@item.ProductStatus</td>
+                                            <td><a href="/Product/DeleteProduct/@item.ProductID" class="btn btn-danger btn-border btn-round">Sil</a></td>
+                                            <td><a href="/Product/UpdateProduct/@item.ProductID" class="btn btn-outline-success">Güncelle</a></td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
-                           <a href="/Category/CreateCategory/" class="btn btn-outline-primary">Yeni Kategori Girişi</a>
+                            <a href="/Product/CreateProduct/" class="btn btn-outline-primary">Yeni Ürün Girişi</a>
                         </div>
                     </div>
                 </div>

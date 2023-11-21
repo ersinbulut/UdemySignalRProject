@@ -55,7 +55,7 @@ namespace SignalRApi.Controllers
             _aboutService.TUpdate(about);
             return Ok("Hakkımda alanı güncellendi");
         }
-        [HttpGet("GetAbout")]
+        [HttpGet("{id}")]
         public IActionResult GetAbout(int id)
         {
             var values = _aboutService.TGetByID(id);

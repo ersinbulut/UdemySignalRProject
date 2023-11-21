@@ -50,11 +50,12 @@ namespace SignalRApi.Controllers
         {
             _productService.TAdd(new Product
             {
-              Description=createProductDto.Description,
-              ImageUrl=createProductDto.ImageUrl,
-              Price=createProductDto.Price,
-              ProductName=createProductDto.ProductName,
-              ProductStatus=createProductDto.ProductStatus
+                Description = createProductDto.Description,
+                ImageUrl = createProductDto.ImageUrl,
+                Price = createProductDto.Price,
+                ProductName = createProductDto.ProductName,
+                ProductStatus = createProductDto.ProductStatus,
+                CategoryID = createProductDto.CategoryID
             });
             return Ok("Ürün bilgisi Eklendi");
         }
@@ -65,7 +66,7 @@ namespace SignalRApi.Controllers
             _productService.TDelete(value);
             return Ok("Ürün bilgisi Silindi");
         }
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var value = _productService.TGetByID(id);
@@ -81,7 +82,8 @@ namespace SignalRApi.Controllers
                 ImageUrl = updateProductDto.ImageUrl,
                 Price = updateProductDto.Price,
                 ProductName = updateProductDto.ProductName,
-                ProductStatus = updateProductDto.ProductStatus
+                ProductStatus = updateProductDto.ProductStatus,
+                CategoryID=updateProductDto.CategoryID
             });
             return Ok("Ürün bilgisi Güncellendi");
         }
