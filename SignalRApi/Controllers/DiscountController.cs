@@ -45,7 +45,7 @@ namespace SignalRApi.Controllers
             _discountService.TDelete(value);
             return Ok("İndirim bilgisi Silindi");
         }
-        [HttpGet("GetDiscount")]
+        [HttpGet("{id}")]
         public IActionResult GetDiscount(int id)
         {
             var value = _discountService.TGetByID(id);
