@@ -1,0 +1,55 @@
+﻿@model List<ResultDiscountDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Günün İndirimleri İşlemleri</h4>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Günün İndirimleri Listesi</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-sub">
+                            Günün İndirimleri aşağıda yer almaktadır. Tema bütünlüğü için 2 adet indirimli ürün seçiniz
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Ürün</th>
+                                        <th>İndirim Oranı</th>
+                                        <th>Durum</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th scope="row">@item.DiscountID</th>
+                                            <td>@item.Title</td>
+                                            <td>@item.Amount</td>
+                                            <td><a href="/Discount/DeleteDiscount/@item.DiscountID" class="btn btn-warning btn-border btn-round">Durum</a></td>
+                                            <td><a href="/Discount/DeleteDiscount/@item.DiscountID" class="btn btn-danger btn-border btn-round">Sil</a></td>
+                                            <td><a href="/Discount/UpdateDiscount/@item.DiscountID" class="btn btn-outline-success">Güncelle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <a href="/Discount/CreateDiscount/" class="btn btn-outline-primary">Yeni İndirimli Ürün Girişi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
