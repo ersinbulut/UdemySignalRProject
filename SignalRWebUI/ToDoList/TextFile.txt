@@ -18,3 +18,8 @@
 --Kasadaki tutar
 --Bugünki kazanç
 --Masa sayısı
+-------------------------------------------------
+
+İstatistiklerin Consume Edilmesi
+
+
