@@ -38,18 +38,22 @@
                                                                 <th>Rezervasyon Durumu</th>
                                                                 <th>Sil</th>
                                                                 <th>Güncelle</th>
+                                                                <th>Onayla</th>
+                                                                <th>İptal Et</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>`
                     $.each(value, (index, item) => {
                         tablehtml += `<tr>
-                                    <td>${item.bookingID}</td>
+                                    <td>${index+1}</td>
                                     <td>${item.name}</td>
                                     <td>${item.phone}</td>
                                     <td>${item.personCount}</td>
-                                    <td>${"Rezervasyon Alındı"}</td>
-                                    <td><a href="/Booking/DeleteBooking/${item.BookingID}" class="btn btn-danger btn-border btn-round">Sil</a></td>
-                                    <td><a href="/Booking/UpdateBooking/${item.BookingID}" class="btn btn-outline-success">Güncelle</a></td>
+                                    <td>${item.description}</td>
+                                    <td><a href="/Booking/DeleteBooking/${item.bookingID}" class="btn btn-danger btn-border btn-round">Sil</a></td>
+                                    <td><a href="/Booking/UpdateBooking/${item.bookingID}" class="btn btn-outline-success">Güncelle</a></td>
+                                    <td><a href="/Booking/BookingStatusApproved/${item.bookingID}" class="btn btn-outline-info">Onayla</a></td>
+                                    <td><a href="/Booking/BookingStatusCancelled/${item.bookingID}" class="btn btn-outline-dark">İptal Et</a></td>
                                     </tr>`
                     });
                     tablehtml += "</tbody></table>"
@@ -74,7 +78,7 @@
                     </div>
                 </div>
             </div>
-
+            <a href="/Booking/CreateBooking/" class="btn btn-primary">Yeni Rezervasyon Girişi</a>
         </div>
     </div>
 </div>

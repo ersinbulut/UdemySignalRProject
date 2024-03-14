@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
 }
 
 <div class="content">
@@ -16,7 +17,7 @@
                     </div>
                     <div class="card-body">
                         <div class="card-sub">
-                            Günün İndirimleri aşağıda yer almaktadır. Tema bütünlüğü için 2 adet indirimli ürün seçiniz
+                            Günün İndirimleri aşağıda yer almaktadır. Tema bütünlüğü için <strong>2 adet</strong> indirimli ürün seçiniz
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered">
@@ -28,18 +29,24 @@
                                         <th>Durum</th>
                                         <th>Sil</th>
                                         <th>Güncelle</th>
+                                        <th>Aktif Yap</th>
+                                        <th>Pasif Yap</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
+                                        count++;
                                         <tr>
-                                            <th scope="row">@item.DiscountID</th>
+                                            <th scope="row">@count</th>
                                             <td>@item.Title</td>
                                             <td>@item.Amount</td>
-                                            <td><a href="/Discount/DeleteDiscount/@item.DiscountID" class="btn btn-warning btn-border btn-round">Durum</a></td>
+                                            <td>@item.Status</td>
                                             <td><a href="/Discount/DeleteDiscount/@item.DiscountID" class="btn btn-danger btn-border btn-round">Sil</a></td>
                                             <td><a href="/Discount/UpdateDiscount/@item.DiscountID" class="btn btn-outline-success">Güncelle</a></td>
+                                            <td><a href="/Discount/ChangeStatusToTrue/@item.DiscountID" class="btn btn-outline-warning">Aktif Yap</a></td>
+                                            <td><a href="/Discount/ChangeStatusToFalse/@item.DiscountID" class="btn btn-outline-dark">Pasif Yap</a></td>
+
                                         </tr>
                                     }
                                 </tbody>
