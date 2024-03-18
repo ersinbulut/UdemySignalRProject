@@ -1,25 +1,11 @@
-﻿--CategoryCount
---ProductCount
---Aktif Kategori Sayısı 
---Pasif Kategori Sayısı
+﻿Default Kontrolü
 
-
---Kategori Adına Göre Ürün Sayısı1
---Kategori Adına Göre Ürün Sayısı2
-
---Ortalama Fiyat
---En yüksek ürünlü fiyat
---En düşük ürünlü fiyat
---Ortalama Hamburger fiyatı
-
---Toplam sipariş sayısı
---Aktif sipariş sayısı
---Son sipariş tutarı
---Kasadaki tutar
---Bugünki kazanç
---Masa sayısı
--------------------------------------------------
-
-İstatistiklerin Consume Edilmesi
-
-
+ProgressBar İstatistik
+Order Sayfası UI
+QR Kod Sistemi
+Menü Sayfası Kontrolü UI
+Logout
+Ayarlar
+Uygulama seviyesinde Authorize
+Mail?
+Arama işlemi -Search
