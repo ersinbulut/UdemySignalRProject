@@ -37,7 +37,7 @@ namespace SignalRApi.Controllers
                 Status = false
             };
             _messageService.TAdd(message);
-            return Ok("Hakkında kısmı başarılı bir şekilde eklendi.");
+            return Ok("Mesaj başarılı bir şekilde eklendi.");
         }
         [HttpDelete("{id}")]
         public IActionResult DeleteMessage(int id)
