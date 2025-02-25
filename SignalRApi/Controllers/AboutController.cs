@@ -43,21 +43,15 @@ namespace SignalRApi.Controllers
         [HttpPut]
         public IActionResult UpdateAbout(UpdateAboutDto updateAboutDto)
         {
-            About about = new About()
-            {
-                AboutID=updateAboutDto.AboutID,
-                Title = updateAboutDto.Title,
-                Description = updateAboutDto.Description,
-                ImageUrl = updateAboutDto.ImageUrl
-            };
-            _aboutService.TUpdate(about);
+            var value = _mapper.Map<About>(updateAboutDto);
+            _aboutService.TUpdate(value);
             return Ok("Hakkımda alanı güncellendi");
         }
         [HttpGet("{id}")]
         public IActionResult GetAbout(int id)
         {
             var values = _aboutService.TGetByID(id);
-            return Ok(values);
+            return Ok(_mapper.Map<GetAboutDto>(values));
         }
     }
 }
