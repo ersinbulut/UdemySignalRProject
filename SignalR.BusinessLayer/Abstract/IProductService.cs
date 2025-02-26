@@ -19,7 +19,7 @@ namespace SignalR.BusinessLayer.Abstract
         public decimal TProductAvgPriceByHamburger();
         public decimal TProductPriceBySteakBurger();
         public decimal TProductPriceByDrinkCategory();
-
         public decimal TTotalPriceBySaladCategory();
+        List<Product> TGetLast9Products();
     }
 }

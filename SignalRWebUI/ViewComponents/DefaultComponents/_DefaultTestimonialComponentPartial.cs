@@ -17,7 +17,6 @@ namespace SignalRWebUI.ViewComponents.DefaultComponents
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7073/api/Testimonial");
-
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<List<ResultTestimonialDto>>(jsonData);
             return View(values);
