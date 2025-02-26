@@ -12,7 +12,7 @@ namespace SignalRApi.Mapping
             CreateMap<SocialMedia, ResultSocialMediaDto>().ReverseMap();
             CreateMap<SocialMedia, CreateSocialMediaDto>().ReverseMap();
             CreateMap<SocialMedia, UpdateSocialMediaDto>().ReverseMap();
-            CreateMap<SocialMedia, GetSocialMediaDto>().ReverseMap();
+            CreateMap<SocialMedia, GetByIdSocialMediaDto>().ReverseMap();
         }
     }
 }
