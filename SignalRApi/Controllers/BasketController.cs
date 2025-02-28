@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using SignalR.BusinessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
 using SignalR.DtoLayer.BasketDto;
-using SignalR.DtoLayer.BookingDto;
 using SignalR.EntityLayer.Entities;
 using SignalRApi.Models;
 
@@ -15,7 +14,6 @@ namespace SignalRApi.Controllers
     public class BasketController : ControllerBase
     {
         private readonly IBasketService _basketService;
-
         public BasketController(IBasketService basketService)
         {
             _basketService = basketService;
@@ -30,30 +28,31 @@ namespace SignalRApi.Controllers
         public IActionResult BasketListByMenuTableWithProductName(int id)
         {
             using var context = new SignalRContext();
-            var values = context.Baskets.Include(x => x.Product).Where
-                (y => y.MenuTableID == id).Select(z => new ResultBasketListWithProducts
-                {
-                    BasketID = z.BasketID,
-                    Count = z.Count,
-                    MenuTableID = z.MenuTableID,
-                    Price = z.Price,
-                    ProductID = z.ProductID,
-                    TotalPrice = z.TotalPrice,
-                    ProductName = z.Product.ProductName
-                }).ToList();
+            var values = context.Baskets.Include(x => x.Product).Where(y => y.MenuTableID == id).Select(z => new ResultBasketListWithProducts
+            {
+                BasketID = z.BasketID,
+                Count = z.Count,
+                MenuTableID = z.MenuTableID,
+                Price = z.Price,
+                ProductID = z.ProductID,
+                TotalPrice = z.TotalPrice,
+                ProductName = z.Product.ProductName
+            }).ToList();
             return Ok(values);
         }
+
         [HttpPost]
         public IActionResult CreateBasket(CreateBasketDto createBasketDto)
         {
-            //bahçe 01 --> 45
+            //Bahçe 01 --> 45
             using var context = new SignalRContext();
             _basketService.TAdd(new Basket()
             {
                 ProductID = createBasketDto.ProductID,
+                MenuTableID = createBasketDto.MenuTableID,
                 Count = 1,
                 Price = context.Products.Where(x => x.ProductID == createBasketDto.ProductID).Select(y => y.Price).FirstOrDefault(),
-                TotalPrice = 0,
+                TotalPrice = createBasketDto.TotalPrice,
             });
             return Ok();
         }
